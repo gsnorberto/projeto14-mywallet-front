@@ -7,7 +7,6 @@ export default () => {
 
     return (
         <LoginArea>
-       
                 <Logo>MyWallet</Logo>
                 <Form onSubmit={Login}>
                     <Input placeholder="E-mail"></Input>
