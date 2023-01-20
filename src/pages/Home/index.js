@@ -9,17 +9,16 @@ export default () => {
     let navigate = useNavigate()
     let { userLS } = useContext(Context)
     const [registers, setRegisters] = useState([]);
-    const [emptyList, setEmptyList] = useState(false);
     const [totalBalance, setTotalBalance] = useState(0);
 
-    useEffect(() => {
+    useEffect(() => { 
         // Se o usuário não estiver autenticado, redireciona para home
         if (!userLS) {
             navigate("/")
         } else {
-            getRegisters();
+            getRegisters()
         }
-    }, []);
+    }, [])
 
     const getRegisters = () => {
         const config = {
@@ -65,10 +64,10 @@ export default () => {
                     <Link><IoExitOutline className="io-exit" /></Link>
                 </Header>
                 <ContentArea>
-                    {emptyList &&
+                    {registers.length === 0 &&
                         <div className="emptyField">Não há registros de entrada ou saída</div>
                     }
-                    {!emptyList &&
+                    {registers.length > 0 &&
                         <List>
                             <Registers>
                                 {registers.map((reg, ind) => (
