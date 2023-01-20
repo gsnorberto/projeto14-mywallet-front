@@ -1,6 +1,7 @@
 import { HomeArea, Container, ContentArea, Header, Title, Link, Button, Text, ButtonArea, Buttons, List, Registers, ListItem, Total } from "./styles"
-import { IoAddCircleOutline, IoRemoveCircleOutline, IoExitOutline } from "react-icons/io5";
-import { useState } from "react";
+import { IoAddCircleOutline, IoRemoveCircleOutline, IoExitOutline } from "react-icons/io5"
+import { useState } from "react"
+import { NavLink } from "react-router-dom"
 
 export default () => {
     const [emptyList, setEmptyList] = useState(false);
@@ -38,11 +39,11 @@ export default () => {
                 </ContentArea>
                 <Buttons>
                     <ButtonArea>
-                        <Button><IoAddCircleOutline className="icon-circle" /></Button>
+                        <Button><NavLink to="/nova-entrada"><IoAddCircleOutline className="icon-circle" /></NavLink> </Button>
                         <Text>Nova entrada</Text>
                     </ButtonArea>
                     <ButtonArea>
-                        <Button><IoRemoveCircleOutline className="icon-circle" /></Button>
+                        <Button> <NavLink to="/nova-saida"><IoRemoveCircleOutline className="icon-circle" /></NavLink></Button>
                         <Text>Nova saída</Text>
                     </ButtonArea>
                 </Buttons>

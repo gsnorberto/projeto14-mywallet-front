@@ -53,12 +53,14 @@ export const Button = styled.a`
         width: 22px;
         height: 22px;  
     }
+    cursor: pointer;
 `
 export const ButtonArea = styled.div`
     color: #FFFFFF;
     padding: 10px;
     display: flex;
     flex-direction: column;
+    align-items: flex-start;
     background-color: #A328D6;
     width: 49%;
     border-radius: 5px;

@@ -1,4 +1,5 @@
 import { LoginArea, Logo, Form, Input, Button, Link } from "./styles"
+import { NavLink } from "react-router-dom"
 
 export default () => {
     const Login = () => {
@@ -13,7 +14,7 @@ export default () => {
                     <Input placeholder="Senha"></Input>
                     <Button type="submit">Entrar</Button>
                 </Form>
-                <Link>Já tem uma conta? Entre agora!</Link>
+                <Link> <NavLink to="/cadastro">Primeira vez? Cadastre-se!</NavLink></Link>
         </LoginArea>
     )
 }

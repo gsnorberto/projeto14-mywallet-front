@@ -48,7 +48,7 @@ export const Button = styled.button`
         opacity: 0.8;
     }
 `
-export const Link = styled.a`
+export const Link = styled.div`
     color: #FFFFFF;
     font-size: 15px;
     font-weight: 700;
