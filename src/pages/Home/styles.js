@@ -44,10 +44,10 @@ export const Title = styled.div`
     color: #FFFFFF;
     font-size: 26px;
 `
-export const Link = styled.a`
+export const Link = styled.div`
     
 `
-export const Button = styled.a`
+export const Button = styled.div`
     margin-bottom: 31px;
     .icon-circle{
         width: 22px;

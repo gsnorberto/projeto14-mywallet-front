@@ -4,7 +4,7 @@ import { NavLink, useNavigate } from "react-router-dom"
 import axios from "axios"
 
 export default () => {
-    let navidate = useNavigate()
+    let navigate = useNavigate()
     const [name, setName] = useState('')
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
@@ -25,9 +25,10 @@ export default () => {
         let data = {name, email, password, confirmPassword}
         axios.post(process.env.REACT_APP_API_URL+"/auth/sign-up", data)
             .then((res) => {
-                navidate("/")
+                navigate("/")
             }).catch((error) => {
-                alert("Error: " + error)
+                console.log(error);
+                alert("Error: " + error.response.data)
             })
     }
 
