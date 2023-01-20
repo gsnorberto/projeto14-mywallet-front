@@ -12,6 +12,7 @@ export default () => {
     const [password, setPassword] = useState('');
 
     useEffect(() => {
+        // Se o usuário não estiver autenticado, redireciona para home
         if (userLS) {
             navigate("/home")
         }

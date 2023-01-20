@@ -1,6 +1,6 @@
 //Obter dados localStorage
 export const getLocalStorage = () => {
-    let storedUser = localStorage.getItem("token");
+    let storedUser = localStorage.getItem("userData");
     if (storedUser) {
         let data = JSON.parse(storedUser);
         return data;
