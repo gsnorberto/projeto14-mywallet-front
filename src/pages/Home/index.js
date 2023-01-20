@@ -1,7 +1,11 @@
-import { HomeArea, Container, ContentArea, Header, Title, Link, Button, Text, ButtonArea, Buttons } from "./styles"
+import { HomeArea, Container, ContentArea, Header, Title, Link, Button, Text, ButtonArea, Buttons, List, Registers, ListItem, Total } from "./styles"
 import { IoAddCircleOutline, IoRemoveCircleOutline, IoExitOutline } from "react-icons/io5";
+import { useState } from "react";
 
 export default () => {
+    const [emptyList, setEmptyList] = useState(false);
+    const [totalBalance, setTotalBalance] = useState(100);
+
     return (
         <HomeArea>
             <Container>
@@ -10,7 +14,27 @@ export default () => {
                     <Link><IoExitOutline className="io-exit" /></Link>
                 </Header>
                 <ContentArea>
-                    Não há registros de entrada ou saída
+                    {emptyList &&
+                        <div className="emptyField">Não há registros de entrada ou saída</div>
+                    }
+                    {!emptyList &&
+                        <List>
+                            <Registers>
+                                <ListItem type={"in"}>
+                                    <div className="desc">
+                                        <div className="date">30/11</div>
+                                        <div className="text">Almoço mãe</div>
+                                    </div>
+                                    <div className="value">20,00</div>
+                                </ListItem>
+                            </Registers>
+                            
+                            <Total total={totalBalance}>
+                                <div className="desc">SALDO</div>
+                                <div className="value">2849,96</div>
+                            </Total>
+                        </List>
+                    }
                 </ContentArea>
                 <Buttons>
                     <ButtonArea>

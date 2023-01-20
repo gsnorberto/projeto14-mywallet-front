@@ -32,10 +32,12 @@ export const ContentArea = styled.div`
     background-color: #FFFFFF;
     border-radius: 5px;
     text-align: center;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #868686;
+    vertical-align: middle;
+
+    .emptyField{
+        padding-top: 220px;
+        color: #868686;
+    }
 `
 export const Title = styled.div`
     font-weight: 700;
@@ -68,4 +70,51 @@ export const Buttons = styled.div`
 `
 export const Text = styled.div`
     max-width: 40px;
+`
+export const List = styled.div`
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+`
+export const Registers = styled.div`
+    display: flex;
+    flex-direction: column;
+    overflow-y: scroll;
+`
+export const ListItem = styled.div`
+    display: flex;
+    justify-content: space-between;
+    margin: 0px 15px;
+    margin-top: 20px;
+    font-size: 16px;
+
+    .desc{
+        display: flex;
+    }
+    .date{
+        margin-right: 5px;
+        color: #C6C6C6;
+    }
+    .text{
+        text-align: left;
+        max-width: 200px;
+        overflow: hidden;
+        text-overflow: ellipsis ;
+    }
+    .value{
+        color: ${props => props.type === 'in' ? '#03AC00': '#C70000'};
+    }
+`
+export const Total = styled.div`
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 15px;
+
+    .desc{
+        font-weight: 700;
+    }
+    .value{
+        color: ${props => props.total < 0 ? '#C70000' : '#03AC00' }
+    }
 `
