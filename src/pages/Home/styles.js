@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const HomeArea = styled.div`
     font-family: 'Raleway', sans-serif;
     background-color: #8C11BE;
-    min-height: 100vh;
+    height: 100vh;
 `
 export const Container = styled.div`
     max-width: 400px;
@@ -28,7 +28,7 @@ export const ContentArea = styled.div`
     margin-top: 22px;
     margin-bottom: 12px;
     width: 100%;
-    min-height: 440px;
+    height: 440px;
     background-color: #FFFFFF;
     border-radius: 5px;
     text-align: center;
