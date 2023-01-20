@@ -37,7 +37,13 @@ export default () => {
 
     const calcTotal = (data) => {
         let soma = 0;
-        data.forEach(reg => soma += Number(reg.value))
+        for(let reg of data){
+            if(reg.type === "in"){
+                soma += Number(reg.value)
+            } else {
+                soma -= Number(reg.value)
+            }
+        }
         setTotalBalance(soma)
     }
 
