@@ -1,14 +1,18 @@
-import { NewInputArea, Container, Title, Input, Button } from "./styles"
+import { NewInputArea, Form, Title, Input, Button } from "./styles"
 
 export default () => {
+    const addNewInput = (e) => {
+        e.preventDefault()
+    }
+
     return (
         <NewInputArea>
-            <Container>
+            <Form onSubmit={addNewInput}>
                 <Title>Nova Entrada</Title>
                 <Input placeholder="Valor" />
                 <Input placeholder="Descrição" />
-                <Button>Salvar entrada</Button>
-            </Container>
+                <Button type="submit">Salvar entrada</Button>
+            </Form>
         </NewInputArea>
     )
 }

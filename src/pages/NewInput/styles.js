@@ -5,7 +5,7 @@ export const NewInputArea = styled.div`
     background-color: #8C11BE;
     height: 100vh;
 `
-export const Container = styled.div`
+export const Form = styled.form`
     margin: 0 auto;
     max-width: 330px;
     padding: 10px;
