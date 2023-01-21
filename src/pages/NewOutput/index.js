@@ -37,6 +37,8 @@ export default () => {
                 alert("Error: " + error.response.data)
             })
     }
+    
+    if(!userLS) return
 
     return (
         <NewOutputArea>

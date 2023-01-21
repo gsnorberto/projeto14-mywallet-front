@@ -45,7 +45,7 @@ export const Title = styled.div`
     font-size: 26px;
 `
 export const Link = styled.div`
-    
+    cursor: pointer;
 `
 export const Button = styled.div`
     margin-bottom: 31px;
@@ -83,6 +83,20 @@ export const Registers = styled.div`
     display: flex;
     flex-direction: column;
     overflow-y: scroll;
+
+    &::-webkit-scrollbar {
+        width: 8px;               /* width of the entire scrollbar */
+    }
+
+    &::-webkit-scrollbar-track {
+        background: white;        /* color of the tracking area */
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background-color: #DDDDDD;    /* color of the scroll thumb */
+        border-radius: 20px;       /* roundness of the scroll thumb */
+        border: 3px solid white;  /* creates padding around scroll thumb */
+    }
 `
 export const ListItem = styled.div`
     display: flex;
@@ -105,7 +119,7 @@ export const ListItem = styled.div`
         text-overflow: ellipsis ;
     }
     .value{
-        color: ${props => props.type === 'in' ? '#03AC00': '#C70000'};
+        color: ${props => props.type === 'in' ? '#03AC00' : '#C70000'};
     }
 `
 export const Total = styled.div`
@@ -117,6 +131,6 @@ export const Total = styled.div`
         font-weight: 700;
     }
     .value{
-        color: ${props => props.total < 0 ? '#C70000' : '#03AC00' }
+        color: ${props => props.total < 0 ? '#C70000' : '#03AC00'}
     }
 `

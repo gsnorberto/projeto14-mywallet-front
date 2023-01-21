@@ -4,14 +4,15 @@ import { useState, useEffect, useContext } from "react"
 import { Context } from "../../context/AuthContext"
 import { NavLink, useNavigate } from "react-router-dom"
 import axios from "axios"
+import { clearStorage } from "../../localStorage"
 
 export default () => {
     let navigate = useNavigate()
-    let { userLS } = useContext(Context)
-    const [registers, setRegisters] = useState([]);
-    const [totalBalance, setTotalBalance] = useState(0);
+    let { userLS, setUserLS } = useContext(Context)
+    const [registers, setRegisters] = useState([])
+    const [totalBalance, setTotalBalance] = useState(0)
 
-    useEffect(() => { 
+    useEffect(() => {
         // Se o usuário não estiver autenticado, redireciona para home
         if (!userLS) {
             navigate("/")
@@ -37,8 +38,8 @@ export default () => {
 
     const calcTotal = (data) => {
         let soma = 0;
-        for(let reg of data){
-            if(reg.type === "in"){
+        for (let reg of data) {
+            if (reg.type === "in") {
                 soma += Number(reg.value)
             } else {
                 soma -= Number(reg.value)
@@ -52,22 +53,30 @@ export default () => {
         let day = newDate.getDate()
         let month = newDate.getMonth() + 1
 
-        if(month < 10){
-            month = '0'+ month
+        if (month < 10) {
+            month = '0' + month
         }
-        if(day < 10){
-            month = '0'+ day
+        if (day < 10) {
+            month = '0' + day
         }
 
         return `${day}/${month}`
     }
+
+    const exit = () => {
+        clearStorage()
+        setUserLS(undefined)
+        navigate("/")
+    }
+
+    if(!userLS) return
 
     return (
         <HomeArea>
             <Container>
                 <Header>
                     <Title>Olá, {userLS.name.split(' ')[0]}</Title>
-                    <Link><IoExitOutline className="io-exit" /></Link>
+                    <Link onClick={exit}><IoExitOutline className="io-exit" /></Link>
                 </Header>
                 <ContentArea>
                     {registers.length === 0 &&

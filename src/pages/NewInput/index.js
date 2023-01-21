@@ -38,6 +38,8 @@ export default () => {
             })
     }
 
+    if(!userLS) return
+
     return (
         <NewInputArea>
             <Form onSubmit={addNewInput}>
