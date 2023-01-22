@@ -28,12 +28,27 @@ export default () => {
 
         axios.get(process.env.REACT_APP_API_URL + "/registers", config)
             .then((res) => {
-                console.log(res.data)
+                //console.log(res.data)
                 setRegisters(res.data)
                 calcTotal(res.data)
             }).catch((error) => {
                 alert("Error: " + error.response.data)
             })
+    }
+
+    const deleteRegister = (registerId) => {
+        if(window.confirm("Tem certeza que deseja apagar esse registro?") === true){
+            const config = {
+                headers: { Authorization: `Bearer ${userLS.token}` }
+            }
+    
+            axios.delete(process.env.REACT_APP_API_URL + `/register/${registerId}`, config)
+                .then((res) => {
+                    getRegisters()
+                }).catch((error) => {
+                    alert("Error: " + error.response.data)
+                })
+        }
     }
 
     const calcTotal = (data) => {
@@ -69,7 +84,7 @@ export default () => {
         navigate("/")
     }
 
-    if(!userLS) return
+    if (!userLS) return
 
     return (
         <HomeArea>
@@ -87,18 +102,21 @@ export default () => {
                             <Registers>
                                 {registers.map((reg, ind) => (
                                     <ListItem key={ind} type={reg.type}>
-                                        <div className="desc">
+                                        <div className="left-side">
                                             <div className="date">{formatDate(reg.date)}</div>
                                             <div className="text">{reg.description}</div>
                                         </div>
-                                        <div className="value">{Number(reg.value).toFixed(2)}</div>
+                                        <div className="right-side">
+                                            <div className="value">{Number(reg.value).toFixed(2).toString().replace(".", ",")}</div>
+                                            <div onClick={() => deleteRegister(reg._id)} className="close-button">x</div>
+                                        </div>
                                     </ListItem>
                                 ))}
                             </Registers>
 
                             <Total total={totalBalance}>
                                 <div className="desc">SALDO</div>
-                                <div className="value">{totalBalance.toFixed(2)}</div>
+                                <div className="value">{totalBalance.toFixed(2).toString().replace(".", ",")}</div>
                             </Total>
                         </List>
                     }

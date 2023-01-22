@@ -105,7 +105,7 @@ export const ListItem = styled.div`
     margin-top: 20px;
     font-size: 16px;
 
-    .desc{
+    .left-side{
         display: flex;
     }
     .date{
@@ -120,6 +120,15 @@ export const ListItem = styled.div`
     }
     .value{
         color: ${props => props.type === 'in' ? '#03AC00' : '#C70000'};
+    }
+    .right-side{
+        display: flex;
+    }
+    .close-button{
+        margin-left: 15px;
+        color: #C6C6C6;
+        font-size: 16px;
+        cursor: pointer;
     }
 `
 export const Total = styled.div`
