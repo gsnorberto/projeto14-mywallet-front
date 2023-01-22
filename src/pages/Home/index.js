@@ -37,11 +37,11 @@ export default () => {
     }
 
     const deleteRegister = (registerId) => {
-        if(window.confirm("Tem certeza que deseja apagar esse registro?") === true){
+        if (window.confirm("Tem certeza que deseja apagar esse registro?") === true) {
             const config = {
                 headers: { Authorization: `Bearer ${userLS.token}` }
             }
-    
+
             axios.delete(process.env.REACT_APP_API_URL + `/register/${registerId}`, config)
                 .then((res) => {
                     getRegisters()
@@ -104,7 +104,11 @@ export default () => {
                                     <ListItem key={ind} type={reg.type}>
                                         <div className="left-side">
                                             <div className="date">{formatDate(reg.date)}</div>
-                                            <div className="text">{reg.description}</div>
+                                            <div className="text">
+                                                <NavLink to={reg.type === 'in' ? `/editar-entrada/${reg._id}`:`/editar-saida/${reg._id}`}>
+                                                    {reg.description}
+                                                </NavLink>
+                                            </div>
                                         </div>
                                         <div className="right-side">
                                             <div className="value">{Number(reg.value).toFixed(2).toString().replace(".", ",")}</div>
