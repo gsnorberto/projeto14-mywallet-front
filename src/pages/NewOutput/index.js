@@ -1,8 +1,9 @@
 import { NewOutputArea, Form, Title, Input, Button } from "./styles"
 import { useState, useEffect, useContext } from "react"
 import { Context } from "../../context/AuthContext"
-import { useNavigate } from "react-router-dom"
+import { useNavigate, NavLink } from "react-router-dom"
 import axios from "axios"
+import { IoArrowBackCircleSharp } from "react-icons/io5"
 
 export default () => {
     let navigate = useNavigate()
@@ -43,19 +44,24 @@ export default () => {
     return (
         <NewOutputArea>
             <Form onSubmit={addNewOutput}>
-                <Title>Nova Saída</Title>
+            <Title>
+                    Nova Saída
+                    <NavLink to="/home"><IoArrowBackCircleSharp className="back-icon" /></NavLink>
+                </Title>
                 <Input
+                    data-test="registry-amount-input"
                     type="number"
                     placeholder="Valor"
                     value={value}
                     onChange={e => setValue(e.target.value)}
                 />
                 <Input
+                    data-test="registry-name-input"
                     placeholder="Descrição"
                     value={description}
                     onChange={e => setDescription(e.target.value)}
                 />
-                <Button type="submit">Salvar saída</Button>
+                <Button data-test="registry-save" type="submit">Salvar saída</Button>
             </Form>
         </NewOutputArea>
     )

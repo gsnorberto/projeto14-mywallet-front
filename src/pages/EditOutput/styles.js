@@ -19,6 +19,16 @@ export const Title = styled.div`
     margin-top: 20px;
     margin-bottom: 40px;
     color: #FFFFFF;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .back-icon{
+        color: #FFFFFF;
+        width: 23px;
+        height: 23px;
+        cursor: pointer;
+    }
 `
 export const Input = styled.input`
     border: 0;

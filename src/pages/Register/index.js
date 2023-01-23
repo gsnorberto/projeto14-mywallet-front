@@ -37,29 +37,33 @@ export default () => {
             <Logo>MyWallet</Logo>
             <Form onSubmit={addUser}>
                 <Input
+                    data-test="name"
                     placeholder="Nome"
                     value={name}
                     onChange={e => setName(e.target.value)}
                 />
                 <Input
+                    data-test="email"
                     placeholder="E-mail"
                     type="email"
                     value={email}
                     onChange={e => setEmail(e.target.value)}
                 />
                 <Input
+                    data-test="password"
                     placeholder="Senha"
                     type="password"
                     value={password}
                     onChange={e => setPassword(e.target.value)}
                 />
                 <Input
+                    data-test="conf-password"
                     placeholder="Confirme a Senha"
                     type="password"
                     value={confirmPassword}
                     onChange={e => setConfirmPassword(e.target.value)}
                 />
-                <Button type="submit">Cadastrar</Button>
+                <Button data-test="sign-up-submit" type="submit">Cadastrar</Button>
             </Form>
             <Link> <NavLink to="/">Já tem uma conta? Entre agora!</NavLink></Link>
         </RegisterArea>

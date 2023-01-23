@@ -90,8 +90,8 @@ export default () => {
         <HomeArea>
             <Container>
                 <Header>
-                    <Title>Olá, {userLS.name.split(' ')[0]}</Title>
-                    <Link onClick={exit}><IoExitOutline className="io-exit" /></Link>
+                    <Title data-test="user-name">Olá, {userLS.name.split(' ')[0]}</Title>
+                    <Link data-test="logout" onClick={exit}><IoExitOutline className="io-exit" /></Link>
                 </Header>
                 <ContentArea>
                     {registers.length === 0 &&
@@ -105,14 +105,20 @@ export default () => {
                                         <div className="left-side">
                                             <div className="date">{formatDate(reg.date)}</div>
                                             <div className="text">
-                                                <NavLink to={reg.type === 'in' ? `/editar-entrada/${reg._id}`:`/editar-saida/${reg._id}`}>
+                                                <NavLink data-test="registry-name" to={reg.type === 'in' ? `/editar-entrada/${reg._id}` : `/editar-saida/${reg._id}`}>
                                                     {reg.description}
                                                 </NavLink>
                                             </div>
                                         </div>
                                         <div className="right-side">
-                                            <div className="value">{Number(reg.value).toFixed(2).toString().replace(".", ",")}</div>
-                                            <div onClick={() => deleteRegister(reg._id)} className="close-button">x</div>
+                                            <div data-test="registry-amount" className="value">
+                                                {Number(reg.value).toFixed(2).toString().replace(".", ",")}
+                                            </div>
+                                            <div
+                                                data-test="registry-delete"
+                                                onClick={() => deleteRegister(reg._id)}
+                                                className="close-button"
+                                            >x</div>
                                         </div>
                                     </ListItem>
                                 ))}
@@ -120,18 +126,18 @@ export default () => {
 
                             <Total total={totalBalance}>
                                 <div className="desc">SALDO</div>
-                                <div className="value">{totalBalance.toFixed(2).toString().replace(".", ",")}</div>
+                                <div data-test="total-amount" className="value">{totalBalance.toFixed(2).toString().replace(".", ",")}</div>
                             </Total>
                         </List>
                     }
                 </ContentArea>
                 <Buttons>
                     <ButtonArea>
-                        <Button><NavLink to="/nova-entrada"><IoAddCircleOutline className="icon-circle" /></NavLink> </Button>
+                        <Button><NavLink data-test="new-income" to="/nova-entrada"><IoAddCircleOutline className="icon-circle" /></NavLink> </Button>
                         <Text>Nova entrada</Text>
                     </ButtonArea>
                     <ButtonArea>
-                        <Button> <NavLink to="/nova-saida"><IoRemoveCircleOutline className="icon-circle" /></NavLink></Button>
+                        <Button> <NavLink data-test="new-expense" to="/nova-saida"><IoRemoveCircleOutline className="icon-circle" /></NavLink></Button>
                         <Text>Nova saída</Text>
                     </ButtonArea>
                 </Buttons>

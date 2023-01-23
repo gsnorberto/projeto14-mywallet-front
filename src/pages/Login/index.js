@@ -42,17 +42,19 @@ export default () => {
             <Logo>MyWallet</Logo>
             <Form onSubmit={Login}>
                 <Input
+                    data-test="email"
                     placeholder="E-mail"
                     value={email}
                     onChange={e => setEmail(e.target.value)}
                 />
                 <Input
+                    data-test="password"
                     type="password"
                     placeholder="Senha"
                     value={password}
                     onChange={e => setPassword(e.target.value)}
                 />
-                <Button type="submit">Entrar</Button>
+                <Button data-test="sign-in-submit" type="submit">Entrar</Button>
             </Form>
             <Link> <NavLink to="/cadastro">Primeira vez? Cadastre-se!</NavLink></Link>
         </LoginArea>
